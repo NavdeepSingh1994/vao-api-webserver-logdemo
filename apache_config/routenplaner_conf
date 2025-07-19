@@ -1,0 +1,64 @@
+<VirtualHost *:80>
+    ServerName routenplaner.verkehrsauskunft.at
+    DocumentRoot /opt/httpd/routenplaner.verkehrsauskunft.at/html
+
+    <Directory "/opt/httpd/routenplaner.verkehrsauskunft.at/html">
+        Options +FollowSymLinks +ExecCGI
+        AllowOverride None
+        Require all granted
+        AddHandler cgi-script .cgi .pl
+    </Directory>
+
+    Alias /api/ /opt/httpd/routenplaner.verkehrsauskunft.at/api/
+    <Directory "/opt/httpd/routenplaner.verkehrsauskunft.at/api">
+        Options +Indexes +FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+    Header set Access-Control-Allow-Origin "*"
+
+    ErrorLog /var/log/apache2/routenplaner_error.log
+    CustomLog /var/log/apache2/routenplaner_access.log combined
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName default-pr1.verkehrsauskunft.at
+    DocumentRoot /opt/httpd/routenplaner.verkehrsauskunft.at/html
+
+    <Directory "/opt/httpd/routenplaner.verkehrsauskunft.at/html">
+        Options +FollowSymLinks +ExecCGI
+        AllowOverride None
+        Require all granted
+        AddHandler cgi-script .cgi .pl
+    </Directory>
+
+    Alias /api/ /opt/httpd/routenplaner.verkehrsauskunft.at/api/
+    <Directory "/opt/httpd/routenplaner.verkehrsauskunft.at/api">
+        Options +Indexes +FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+    Header set Access-Control-Allow-Origin "*"
+
+    ErrorLog /var/log/apache2/defaultpr1_error.log
+    CustomLog /var/log/apache2/defaultpr1_access.log combined
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName localhost
+    DocumentRoot /opt/httpd/routenplaner.verkehrsauskunft.at/html
+
+    <Directory "/opt/httpd/routenplaner.verkehrsauskunft.at/html">
+        Options +FollowSymLinks +ExecCGI
+        AllowOverride None
+        Require all granted
+        AddHandler cgi-script .cgi .pl
+    </Directory>
+
+    Header set Access-Control-Allow-Origin "*"
+
+    ErrorLog /var/log/apache2/localhost_error.log
+    CustomLog /var/log/apache2/localhost_access.log combined
+</VirtualHost>
